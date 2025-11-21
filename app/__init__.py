@@ -7,19 +7,27 @@ import os
 # import the blueprints for the routes
 from .views import views
 
+
 load_dotenv()
 db = SQLAlchemy()
 
 def create_app():
     app = Flask("app")
-    db.init_app()
+    
     api = Api(app)
 
     app.config["SECRET_KEY"] = os.getenv("MY_SECRET_KEY")
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
 
     app.register_blueprint(views, url_prefix="/")
 
-    from .api import HelloWorld
-    api.add_resource(HelloWorld, '/')
+    db.init_app(app)
+
+
+    # import of the api classes idk
+    from .api import task_api, list_api
+
+    api.add_resource(task_api, '/tasks')
+    api.add_resource(list_api, '/lists')
 
     return app

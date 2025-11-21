@@ -4,7 +4,7 @@ class Task(db.Model):
     id = db.Column(db.String(64), primary_key=True)
     parent_id = db.Column(db.String(64), primary_key=True)
     list = db.Column(db.String(64), primary_key=True)
-    is_in_my_day = db.Column(db.Bool)
+    is_in_my_day = db.Column(db.Boolean)
     created_at = db.Column(db.Integer)
     due_to = db.Column(db.Integer)
     done_at = db.Column(db.Integer)
