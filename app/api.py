@@ -1,5 +1,7 @@
 from flask_restful import Resource
+from flask_sqlalchemy import SQLAlchemy
+from . import db
 
-class HelloWorld(Resource):
+class aquatd(Resource):
     def get(self):
-        return {'message': 'MI bomboclat'}
+        pass

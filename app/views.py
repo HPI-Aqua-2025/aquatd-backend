@@ -26,19 +26,6 @@ def home():
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 # NEVER, I REPEAT NEVERRRR - touch this code snippet pls <3
 #
 # just keep it for the sake of it
