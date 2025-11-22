@@ -25,9 +25,12 @@ def create_app():
 
 
     # import of the api classes idk
-    from .api import task_api, list_api
+    from .api import task_api, list_api_task, list_api_id, list_api
 
-    api.add_resource(task_api, '/tasks')
+    api.add_resource(task_api, '/tasks/<task_id>')
+    api.add_resource(list_api_task, '/lists/<list_id>/tasks/<task_id>')
+    api.add_resource(list_api_id, '/lists/<list_id>')
     api.add_resource(list_api, '/lists')
+
 
     return app

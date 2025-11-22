@@ -12,9 +12,19 @@ class Task(db.Model):
     content = db.Column(db.String(64))
     title = db.Column(db.String(64))
     # repeat_every
+    
+    def to_dict(self):
+        a = self.__dict__.copy()
+        del a["_sa_instance_state"]
+        return a
 
 class List(db.Model):
     id = db.Column(db.String(64), primary_key=True)
     owner_id = db.Column(db.String(64), primary_key=True)
     name = db.Column(db.String(64), primary_key=True)
     created_at = db.Column(db.Integer)
+
+    def to_dict(self):
+        a = self.__dict__.copy()
+        del a["_sa_instance_state"]
+        return a
