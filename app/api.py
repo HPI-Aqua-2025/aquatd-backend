@@ -87,7 +87,7 @@ class list_api_id(Resource):
         return [x.to_dict() for x in List.query.filter(id=list_id)], 200
     
     def delete(self, list_id):
-        chosen_list = List.query.filter(id=list_id)
+        chosen_list = List.query.filter_by(id=list_id)
         if chosen_list:
             db.session.delete(chosen_list)
             db.session.commit()
@@ -105,11 +105,22 @@ class list_api_id(Resource):
         name = data['name']
         created_at = data['created_at']
 
-        list = List.query.filter(id=list_id)
+        # Retrieve the List object from the database by its primary key (id)
+        list = List.query.get(list_id)
+        
+        if not list:
+            return jsonify({"error": "List not found"}), 404
+
+        # Update the fields of the list
         list.owner_id = owner_id
         list.name = name
-        list.create_at = created_at
-        return 200
+        list.created_at = created_at  # Fixed typo here (was create_at)
+
+        # Commit the changes to the database
+        db.session.commit()
+
+        # Return a successful response
+        return jsonify({"message": "List updated successfully"}), 200
     
 
 class list_api(Resource):

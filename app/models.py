@@ -20,8 +20,8 @@ class Task(db.Model):
 
 class List(db.Model):
     id = db.Column(db.String(64), primary_key=True)
-    owner_id = db.Column(db.String(64), primary_key=True)
-    name = db.Column(db.String(64), primary_key=True)
+    owner_id = db.Column(db.String(64))
+    name = db.Column(db.String(64))
     created_at = db.Column(db.Integer)
 
     def to_dict(self):
