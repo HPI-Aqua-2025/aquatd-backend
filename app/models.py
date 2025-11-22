@@ -3,7 +3,7 @@ from . import db
 class Task(db.Model):
     id = db.Column(db.String(64), primary_key=True)
     parent_id = db.Column(db.String(64), primary_key=True)
-    list = db.Column(db.String(64), primary_key=True)
+    list_name = db.Column(db.String(64), primary_key=True)
     is_in_my_day = db.Column(db.Boolean)
     created_at = db.Column(db.Integer)
     due_to = db.Column(db.Integer)
